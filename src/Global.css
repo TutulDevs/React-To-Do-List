@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=RocknRoll+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+
+
+    --white: #ffffff;
+    --black: #333333;
+    --gray: #e9ecef;
+    --blue-1: #04a6c2;
+    --blue-2: #0899ba;
+    --blue-3: #0f80aa;
+}
+
+body {
+    color: var(--black) ;
+    line-height: 1.6;
+    font-size: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    border-bottom: 2px dotted var(--blue-1);
+    color: var(--blue-3);
+}
+
+button {
+    cursor: pointer;
+}
+
+.Container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.Headline {
+    margin-bottom: 2rem;
+    color: var(--blue-1);
+    font-size: 5rem;
+    font-family: 'RocknRoll One', sans-serif;
+}
+
+.BigButton {
+    border: 2px solid var(--blue-2);
+    display: inline-block;
+    margin: 1rem 0;
+    padding: 1.25rem 4rem;
+    border-radius: 2.5rem;
+    font-weight: 400;
+    background: var(--blue-2);
+    color: var(--white);
+    transition: all 0.3s ease-in-out;
+}
+.BigButton:hover {
+    background: var(--white);
+    color: var(--blue-2);
+}
+

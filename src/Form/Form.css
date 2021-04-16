@@ -1,0 +1,31 @@
+.Form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Form input,
+.Form button {
+    min-width: 25rem;
+    margin: 0.75rem 0;
+    padding: 1rem;
+    border: 1px solid var(--blue-3);
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+}
+
+.Form button {
+    font-size: 1.6rem;
+    background: var(--white);
+    border: 2px solid var(--blue-1);
+}
+
+.Form .SignIn {
+    background: var(--blue-1);
+    color: var(--white);
+}
+
+.Form input:focus,
+.Form button:focus {
+    outline: 1px solid var(--blue-3);
+}
