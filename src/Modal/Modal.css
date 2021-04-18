@@ -38,3 +38,8 @@
     background: transparent;
   }
   
+@media screen and (max-width:500px) {
+  .modal {
+    background-position: 0 110%;
+  }
+}

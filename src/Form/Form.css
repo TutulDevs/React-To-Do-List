@@ -7,7 +7,7 @@
 .Form input,
 .Form button {
     min-width: 25rem;
-    margin: 0.75rem 0;
+    margin: 0.5rem 0;
     padding: 1rem;
     border: 1px solid var(--blue-3);
     border-radius: 0.5rem;
@@ -28,4 +28,9 @@
 .Form input:focus,
 .Form button:focus {
     outline: 1px solid var(--blue-3);
+}
+
+.Form .errorMessage {
+    color: crimson;
+    margin: 0.75rem 0;
 }

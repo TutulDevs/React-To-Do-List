@@ -7,7 +7,7 @@ import './Home.css';
 function Home() {
 
     // For Modal 
-    const [modal, setModal] = useState(true);
+    const [modal, setModal] = useState(false);
     const modalHandler = () => (modal ? setModal(false) : setModal(true));
 
     let transform;
@@ -20,7 +20,7 @@ function Home() {
     let scale;
     modal
         ? (scale = { transform: "scale(1) rotate(0deg)" })
-        : (scale = { transform: "scale(0) rotate(25deg)" });
+        : (scale = { transform: "scale(0) rotate(15deg)" });
 
     
         // for BigButton Route
