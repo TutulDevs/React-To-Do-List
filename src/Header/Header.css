@@ -1,0 +1,21 @@
+.Header {
+    min-height: 5rem;
+    box-shadow: 0px -5px 1.5rem 1rem #04a6c247;
+}
+
+.Header .Container {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Header a {
+    font-size: 1.5rem;
+    border: 1px dotted transparent;
+    padding: 0.5rem 1.5rem;
+}
+
+.Header a:focus {
+    border: 1px dotted var(--blue-1);
+}
