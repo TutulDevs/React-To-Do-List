@@ -1,0 +1,45 @@
+.TodoForm {
+    width: 100%;
+    min-height: 20vh;
+    display: grid;
+    place-items: center;
+}
+
+.TodoForm > div {
+    width: 100%;
+    max-width: 50rem;
+    min-height: 5rem;
+    padding: 0.5rem;
+    background: var(--white);
+    border: 2px solid var(--blue-1);
+    border-radius: 2.5rem;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.TodoForm input,
+.TodoForm button {
+    font-size: 1.8rem;
+    padding: 0 1.5rem;
+    border: 0;
+    border-radius: inherit;
+    outline: 0;
+    background: transparent;
+}
+
+.TodoForm input {
+    width: 100%;
+}
+
+.TodoForm button {
+    padding: 0 2.5rem;
+    font-weight: 400;
+    color: var(--white);
+    background: var(--blue-1);
+    transition: all 0.5s ease;
+}
+
+.TodoForm button:hover {
+    background: var(--blue-3);
+}

@@ -31,22 +31,24 @@ function Home() {
 
   return (
     <div className="Home">
+      <div className='Container'>
 
-      <Modal translate={transform} scale={scale} close={modalHandler}>
-          <Form />
-      </Modal>
+        <Modal translate={transform} scale={scale} close={modalHandler}>
+            <Form />
+        </Modal>
 
-      <h1 className='Headline'>React To-Do List</h1>
+        <h1 className='Headline'>React To-Do List</h1>
 
-      <p>
-        This project built for practicing Reactjs, Reduxjs and Firebase. 
-      </p>
-      <p>
-        This project is built and maintained by <a href='https://github.com/TutulDevs' rel='noreferrer' target='_blank'>Tutul</a>. You can try this app by registering. Your data will be safe and not abused.
-      </p>
+        <p>
+          This project built for practicing Reactjs, Reduxjs and Firebase. 
+        </p>
+        <p>
+          This project is built and maintained by <a href='https://github.com/TutulDevs' rel='noreferrer' target='_blank'>Tutul</a>. You can try this app by registering. Your data will be safe and not abused.
+        </p>
 
-        { link }
+          { link }
 
+      </div>
     </div>
   );
 }
