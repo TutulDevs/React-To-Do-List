@@ -1,11 +1,26 @@
+import { connect } from 'react-redux';
+
 import './Form.css' ;
+
 
 // for auth
 function Form() {
+
+    const onInputChange = e => {
+        console.log(e.target[0].value);
+    }
+
+    const onSubmitHandler = e => {
+        e.preventDefault();
+
+        console.log('submitted');
+    }
+
+
     return (
-        <form className='Form'>
-            <input type='text' placeholder='Email' required />
-            <input type='password' placeholder='Password' required />
+        <form className='Form' onSubmit={onSubmitHandler}>
+            <input type='text' placeholder='Email' name='email' required onChange={onInputChange} />
+            <input type='password' placeholder='Password' required onChange={onInputChange} />
 
             <p className='errorMessage'>
                 Firebase says: <span>ALREADY EXIST</span>
@@ -17,4 +32,6 @@ function Form() {
     )
 }
 
-export default Form;
+
+
+export default connect()(Form);

@@ -24,7 +24,7 @@ function Home() {
 
     
         // for BigButton Route
-    let link = <a href='/#' className='BigButton' onClick={modalHandler} >Try for Free</a> ;
+    let link = <button className='BigButton' onClick={modalHandler} >Try for Free</button> ;
     if (3 === 2) {
         link = <a href='/todos' className='BigButton'>See Your To-Dos</a> ;
     }
