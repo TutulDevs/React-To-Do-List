@@ -1,0 +1,16 @@
+
+.NavLinks {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.NavLinks a {
+    border-bottom: 0;
+}
+
+.NavLinks .Logo {
+    font-family: 'RocknRoll One', sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+}

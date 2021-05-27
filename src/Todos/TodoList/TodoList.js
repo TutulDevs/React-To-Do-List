@@ -49,7 +49,7 @@ class TodoList extends Component {
         return (
             <ul className='TodoList'>
                 
-                {todos} 
+                {/* {todos}  */}
 
             </ul>
         )

@@ -1,6 +1,6 @@
 import './Todos.css';
 
-import Header from '../Header/Header';
+import Navbar from '../Navbar/Navbar';
 import TodoForm from './TodoForm/TodoForm';
 import TodoList from './TodoList/TodoList';
 
@@ -8,7 +8,7 @@ function Todos() {
     
     return (
         <main className='Main'>
-            <Header />
+            <Navbar />
             
             <div className='Container'>
                 <TodoForm />

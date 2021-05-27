@@ -20,7 +20,7 @@ function Home() {
     let scale;
     modal
         ? (scale = { transform: "scale(1) rotate(0deg)" })
-        : (scale = { transform: "scale(0) rotate(15deg)" });
+        : (scale = { transform: "scale(0) rotate(10deg)" });
 
     
         // for BigButton Route

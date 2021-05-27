@@ -11,7 +11,7 @@ function App() {
     <div className="App">
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/todos' component={Todos} />
+          <Route path='/dashboard' component={Todos} />
           <Redirect from='/home' to='/' />
           <Route component={Home} />
         </Switch>
