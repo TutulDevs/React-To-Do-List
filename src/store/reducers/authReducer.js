@@ -1,4 +1,4 @@
-import { updatedObj } from '../shared/utility';
+import { updatedObj } from '../../shared/utility';
 
 const initState = {
     token: null,
@@ -9,7 +9,7 @@ const initState = {
 
 
 
-const reducer = (state = initState, action) => {
+const authReducer = (state = initState, action) => {
     switch(action.type) {
 
         case 'AUTH_START': 
@@ -23,4 +23,4 @@ const reducer = (state = initState, action) => {
     }
 }
 
-export default reducer;
+export default authReducer;
