@@ -5,6 +5,7 @@ const initState = {
     userId: null,
     error: null,
     loading: false,
+    authRedirectPath: '/',
 }
 
 
@@ -16,7 +17,19 @@ const authReducer = (state = initState, action) => {
             return updatedObj(state, {
                 error: null, 
                 loading: true,
-            })
+            });
+        case 'AUTH_SUCCESS':
+            return updatedObj(state, {
+                token: action.idToken,
+                userId: action.userId,
+                error: null,
+                loading: false,
+            });
+        case 'AUTH_FAIL':
+            return updatedObj(state, {
+                error: action.error,
+                loading: false,
+            });
 
         default: 
             return state;
