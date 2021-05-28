@@ -36,6 +36,7 @@ export const auth = (email, password, isSignup) => {
 
         // FB link for Sign Up
         const key = 'AIzaSyAlBJojs8XOnH6FVAe6zEcLeA9cehdgTvk';
+
         let url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${key}`;
 
         // for Sign In
@@ -48,9 +49,17 @@ export const auth = (email, password, isSignup) => {
 
             // local
             // dispatch success 
+            dispatch( authSuccess(res.data.idToken, res.data.localId) );
             // dispatch logout
         })
         .catch(err => dispatch(authFail(err.response.data.error)))
+    }
+}
+
+export const setAuthRedirectPath = path => {
+    return {
+        type: 'SET_AUTH_REDIRECT_PATH',
+        path: path,
     }
 }
 

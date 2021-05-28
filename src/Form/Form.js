@@ -1,7 +1,7 @@
 import './Form.css' ;
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { auth } from '../store/actions/authAction';
+import { auth, setAuthRedirectPath } from '../store/actions/authAction';
 import Spinner from '../Spinner/Spinner';
 
 
@@ -12,6 +12,12 @@ class Form extends Component {
         email: '',
         password: '',
         isSignup: false,
+    }
+
+    componentDidMount() {
+        if(this.props.authRedirectPath === '/') {
+            this.props.onSetAuthRedirectPath('/dashboard');
+        }
     }
 
     handleChange = e => {
@@ -72,6 +78,7 @@ const mapStateToProps = state => {
         loading: state.auth.loading,
         error: state.auth.error,
         isAuth: state.auth.token !== null,
+        authRedirectPath: state.auth.authRedirectPath,
     }
 }
 
@@ -79,6 +86,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, password, isSignup) => dispatch(auth(email, password, isSignup)),
+        onSetAuthRedirectPath: () => dispatch(setAuthRedirectPath('/dashboard')),
     }
 }
 

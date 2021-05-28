@@ -3,8 +3,10 @@ import Modal from '../Modal/Modal';
 import Form from '../Form/Form';
 
 import './Home.css';
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-function Home() {
+function Home(props) {
 
     // For Modal 
     const [modal, setModal] = useState(false);
@@ -23,19 +25,22 @@ function Home() {
         : (scale = { transform: "scale(0) rotate(10deg)" });
 
     
-        // for BigButton Route
+    // for BigButton Route
     let link = <button className='BigButton' onClick={modalHandler} >Try for Free</button> ;
-    if (3 === 2) {
-        link = <a href='/todos' className='BigButton'>See Your To-Dos</a> ;
+    if (props.isAuthenticated) {
+        link = <Link to='/dashboard' className='BigButton'>See Your To-Dos</Link> ;
     }
+
+    let ModalDisplay = <Modal translate={transform} scale={scale} close={modalHandler}>
+      <Form />
+    </Modal>;
+
 
   return (
     <div className="Home">
       <div className='Container'>
 
-        <Modal translate={transform} scale={scale} close={modalHandler}>
-            <Form />
-        </Modal>
+        { !props.isAuthenticated ? ModalDisplay : null }
 
         <h1 className='Headline'>React To-Do List</h1>
 
@@ -53,4 +58,10 @@ function Home() {
   );
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.token !== null,
+  }
+}
+
+export default connect(mapStateToProps)(Home);
