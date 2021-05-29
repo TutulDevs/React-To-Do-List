@@ -30,9 +30,10 @@ const authReducer = (state = initState, action) => {
                 error: action.error,
                 loading: false,
             });
-        case 'SET_AUTH_REDIRECT_PATH':
+        case 'AUTH_LOGOUT': 
             return updatedObj(state, {
-                authRedirectPath: action.path, 
+                token: null,
+                userId: null,
             })
 
         default: 

@@ -1,9 +1,9 @@
+import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Home from './Home/Home';
 import Dashboard from './Dashboard/Dashboard';
-
-import './App.css';
-import { connect } from 'react-redux';
+import Logout from './Auth/Logout';
 
 
 
@@ -14,8 +14,9 @@ function App(props) {
                     <Redirect to='/' />
                 </Switch>;
   if(props.isAuthenticated) routes = <Switch>
-          <Route path='/' exact component={Dashboard} />
+          <Route path='/logout' component={Logout} />
           <Route path='/home' component={Home} />
+          <Route path='/' exact component={Dashboard} />
           <Redirect to='/' />
         </Switch>;
 

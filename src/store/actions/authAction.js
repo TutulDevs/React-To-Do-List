@@ -21,6 +21,23 @@ export const authFail = error => {
     }
 }
 
+export const authLogout = () => {
+    // remove from local 
+
+    return {
+        type: 'AUTH_LOGOUT',
+    }
+}
+
+// for dispatching expire time
+export const checkAuthTimeout = expireTime => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch( authLogout() );
+        }, expireTime * 1000);
+    }
+}
+
 
 export const auth = (email, password, isSignup) => {
     return dispatch => {
@@ -50,18 +67,14 @@ export const auth = (email, password, isSignup) => {
             // local
             // dispatch success 
             dispatch( authSuccess(res.data.idToken, res.data.localId) );
+            
             // dispatch logout
+            dispatch( checkAuthTimeout(res.data.expiresIn) );
         })
         .catch(err => dispatch(authFail(err.response.data.error)))
     }
 }
 
-export const setAuthRedirectPath = path => {
-    return {
-        type: 'SET_AUTH_REDIRECT_PATH',
-        path: path,
-    }
-}
 
 
 /*

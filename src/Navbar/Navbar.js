@@ -10,7 +10,7 @@ const Navbar = () => {
                         <Link to='/home' className='Logo'>ToDo List</Link>
                     </li>
                     <li>
-                        <Link to='/'>Log Out</Link>
+                        <Link to='/logout'>Log Out</Link>
                     </li>
                 </ul>
             </div>
