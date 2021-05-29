@@ -23,6 +23,9 @@ export const authFail = error => {
 
 export const authLogout = () => {
     // remove from local 
+    localStorage.removeItem('token');
+    localStorage.removeItem('expirationDate');
+    localStorage.removeItem('userId');
 
     return {
         type: 'AUTH_LOGOUT',
@@ -62,18 +65,54 @@ export const auth = (email, password, isSignup) => {
         // Now send it
         axios.post(url, authData)
         .then(res => {
-            console.log(res);
-
             // local
+            const expirationDate = new Date(new Date().getTime() + res.data.expiresIn * 1000); // = present time + 1 hour
+            localStorage.setItem('token', res.data.idToken);
+            localStorage.setItem('expirationDate', expirationDate);
+            localStorage.setItem('userId', res.data.localId);
+
             // dispatch success 
             dispatch( authSuccess(res.data.idToken, res.data.localId) );
-            
+
             // dispatch logout
             dispatch( checkAuthTimeout(res.data.expiresIn) );
         })
         .catch(err => dispatch(authFail(err.response.data.error)))
     }
 }
+
+
+// for checking to auth status and auto login/ logout
+export const authCheckState = () => {
+    return dispatch => {
+        // IF no token = get out
+        // ELSE 
+            // IF the expirationDate is less than today = get out
+            // ELSE 
+                // get the userId 
+                // success
+                // checkAuthTimeout
+        
+        const token = localStorage.getItem('token');
+        if(!token) {
+            dispatch(authLogout());
+        }else {
+            const expirationDate = new Date(localStorage.getItem('expirationDate')); // from string to object
+            if(expirationDate <= new Date()) {
+                dispatch(authLogout());
+            }else {
+                const userId = localStorage.getItem('userId');
+                dispatch(authSuccess(token, userId));
+                dispatch(checkAuthTimeout(
+                    (expirationDate.getTime() - new Date().getTime()) / 1000
+                ))
+            }
+
+        }
+    }
+}
+
+
 
 
 

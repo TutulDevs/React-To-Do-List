@@ -4,10 +4,16 @@ import { connect } from 'react-redux';
 import Home from './Home/Home';
 import Dashboard from './Dashboard/Dashboard';
 import Logout from './Auth/Logout';
+import { authCheckState } from './store/actions/authAction';
+import { useEffect } from 'react';
 
 
 
 function App(props) {
+
+  useEffect(() => {
+    props.onTryAutoSignIn();
+  })
   
   let routes = <Switch>
                     <Route path='/' exact component={Home} />
@@ -35,4 +41,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignIn: () => dispatch(authCheckState()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

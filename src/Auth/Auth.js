@@ -44,7 +44,9 @@ class Auth extends Component {
         let errorMessage = null; 
         if(this.props.loading) errorMessage = <Spinner />;
         if(this.props.error) errorMessage = <p className='errorMessage'>
-            Firebase says: <span> {this.props.error.message} </span>
+            Firebase says: <span>
+                {this.props.error.message.split('_').join(' ')}
+            </span>
         </p>;
 
         return (

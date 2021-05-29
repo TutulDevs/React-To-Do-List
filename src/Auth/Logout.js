@@ -12,7 +12,7 @@ class Logout extends Component {
 
     // redirect to the main page
     render() {
-        return <Redirect to='/home' />
+        return <Redirect to='/' />
     }
 }
 
