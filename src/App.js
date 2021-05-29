@@ -1,6 +1,6 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from './Home/Home';
-import Todos from './Todos/Todos';
+import Dashboard from './Dashboard/Dashboard';
 
 import './App.css';
 import { connect } from 'react-redux';
@@ -11,14 +11,12 @@ function App(props) {
   
   let routes = <Switch>
                     <Route path='/' exact component={Home} />
-                    <Redirect from='/home' to='/' />
-                    <Route component={Home} />
+                    <Redirect to='/' />
                 </Switch>;
   if(props.isAuthenticated) routes = <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/dashboard' component={Todos} />
-          <Redirect from='/home' to='/' />
-          <Route component={Home} />
+          <Route path='/' exact component={Dashboard} />
+          <Route path='/home' component={Home} />
+          <Redirect to='/' />
         </Switch>;
 
   return (

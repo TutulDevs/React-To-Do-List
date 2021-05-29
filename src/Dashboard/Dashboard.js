@@ -1,10 +1,10 @@
-import './Todos.css';
+import './Dashboard.css';
 
 import Navbar from '../Navbar/Navbar';
 import TodoForm from './TodoForm/TodoForm';
 import TodoList from './TodoList/TodoList';
 
-function Todos() {
+function Dashboard() {
     
     return (
         <main className='Main'>
@@ -18,4 +18,4 @@ function Todos() {
     )
 }
 
-export default Todos;
+export default Dashboard;

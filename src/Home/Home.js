@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Modal from '../Modal/Modal';
-import Form from '../Form/Form';
 
 import './Home.css';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Auth from "../Auth/Auth";
 
 function Home(props) {
 
@@ -32,7 +32,7 @@ function Home(props) {
     }
 
     let ModalDisplay = <Modal translate={transform} scale={scale} close={modalHandler}>
-      <Form />
+      <Auth />
     </Modal>;
 
 

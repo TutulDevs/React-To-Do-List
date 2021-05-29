@@ -1,4 +1,4 @@
-import './Form.css' ;
+import './Auth.css' ;
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { auth, setAuthRedirectPath } from '../store/actions/authAction';
@@ -6,7 +6,7 @@ import Spinner from '../Spinner/Spinner';
 
 
 // for auth
-class Form extends Component {
+class Auth extends Component {
 
     state = {
         email: '',
@@ -90,4 +90,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
