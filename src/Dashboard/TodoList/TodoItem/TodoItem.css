@@ -1,0 +1,46 @@
+.TodoItem {
+    width: 100%;
+    max-width: 55rem;
+    min-height: 10rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.75rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem -0.4rem var(--blue-1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.TodoItem_Box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.TodoItem_Box-Task {
+    font-size: 1.8rem;
+}
+.TodoItem_Box-Task.Completed {
+    text-decoration: line-through;
+    text-decoration-color: var(--blue-3);
+    text-decoration-thickness: 0.25rem;
+}
+
+.TodoItem_Box-Date {
+    color: #888888;
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
+}
+
+.TodoItem_Btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.TodoItem_Btns button {
+    padding: 0.75rem 0.5rem;
+    border: 0;
+    background: transparent;
+    font-size: inherit;
+}
