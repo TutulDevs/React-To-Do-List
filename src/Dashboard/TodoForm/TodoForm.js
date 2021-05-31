@@ -1,51 +1,68 @@
 import './TodoForm.css';
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { createTodo } from '../../store/actions/todoAction';
+import { todoSend } from '../../store/actions/todoAction';
+
 
 
 function TodoForm(props) {
 
     const [singleTodo, setsingleTodo] = useState({
         todo: '',
-        time: '',
+        date: '',
         completed: false, 
+        userId: '',
     });
 
     const handleChange = e => {
-        const time = new Date().toLocaleString();
+        const created = new Date().toLocaleString();
         const todo = e.target.value;
 
         setsingleTodo({
             todo,
-            time,
+            date: created, 
             completed: false,
+            userId: props.userId,
         })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // send it to firebase via axios
-        //console.log(singleTodo);
-        props.createTodo(singleTodo)
+        // send the state to FB
+        props.onTodoSend(singleTodo, props.token); 
+
+        // reset
+        e.target.reset();
     }
 
+    let button = <button className='submitBtn' type='submit'>Add</button>;
+    if(props.loading) button = <p className='submitBtn'>Loading...</p>;
+
     return (
-        <form className='TodoForm' onSubmit={handleSubmit}>
+        <form className='TodoForm' id='form' onSubmit={handleSubmit}>
             <div>
                 <input type='text' placeholder='What to do?' maxLength='50' required onChange={handleChange} />
 
-                <button type='submit'>Add</button>
+                { button }
             </div>
         </form>
     )
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
     return {
-        createTodo: todo => dispatch(createTodo(todo))
+        loading: state.todo.loading,
+        todoSent: state.todo.todoSent,
+        token: state.auth.token, 
+        userId: state.auth.userId, 
     }
 }
 
-export default connect(null, mapDispatchToProps)(TodoForm);
+const mapDispatchToProps = dispatch => {
+    return {
+        onTodoSend: (todoData, token) => dispatch(todoSend(todoData, token)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);

@@ -19,7 +19,7 @@
 }
 
 .TodoForm input,
-.TodoForm button {
+.TodoForm button.submitBtn {
     font-size: 1.8rem;
     padding: 0 1.5rem;
     border: 0;
@@ -32,7 +32,7 @@
     width: 100%;
 }
 
-.TodoForm button {
+.TodoForm button.submitBtn {
     padding: 0 2.5rem;
     font-weight: 400;
     color: var(--white);
@@ -42,4 +42,18 @@
 
 .TodoForm button:hover {
     background: var(--blue-3);
+}
+
+.TodoForm p.submitBtn {
+    padding: 0 1.5rem;
+    color: var(--blue-3);
+    font-weight: 400;
+    border: 2px solid var(--blue-1);
+    border-radius: 2.5rem;
+    display: grid;
+    place-items: center;
+}
+
+.TodoForm p.submitBtn.failed {
+    color: crimson;
 }

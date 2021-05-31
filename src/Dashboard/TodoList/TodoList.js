@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from '../../axios';
-import Spinner from '../../Spinner/Spinner';
+//import axios from '../../axios';
+//import Spinner from '../../Spinner/Spinner';
 import './TodoList.css';
 
 class TodoList extends Component {
@@ -10,6 +10,7 @@ class TodoList extends Component {
         loading: false,
     }
 
+    /*
     componentDidMount () {
         // show spinner 
         this.setState({loading: true});
@@ -34,10 +35,11 @@ class TodoList extends Component {
         })
         .catch((err) => this.setState({loading: true}));
     }
-
+    */
 
     render() {
 
+        /*
         let todos = this.state.list.map(el => (
             <li key={el.id}>
                 {el.todo} , {el.time}
@@ -45,11 +47,14 @@ class TodoList extends Component {
         ));
 
         if(this.state.loading) todos = <Spinner />;
+        */
 
         return (
             <ul className='TodoList'>
                 
-                {/* {todos}  */}
+                <p>
+                    ToDo Items will be here...
+                </p>
 
             </ul>
         )

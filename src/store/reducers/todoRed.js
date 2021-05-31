@@ -1,12 +1,8 @@
 import { updatedObj } from '../../shared/utility';
 
 const initState = {
-    todos: [
-        {id: '1', todo: 'help me find peach', time: '5/28/2021, 12:34:06 AM', completed: false},
-        {id: '2', todo: 'collect all the stars', time: '5/28/2021, 12:34:06 AM', completed: false},
-        {id: '3', todo: 'egg hunt with yoshi', time: '5/28/2021, 12:34:06 AM', completed: false},
-    ],
-    error: null,
+    todos: [],
+    todoSent: false,
     loading: false,
 }
 
@@ -16,12 +12,25 @@ const initState = {
 const todoReducer = (state = initState, action) => {
     switch(action.type) {
 
-        case 'CREATE_TODO': 
+        // for Sending //
+        case 'TODO_START':
+            return updatedObj(state, {loading: true});
+
+        case 'TODO_SUCCESS': 
+            const newTodo = updatedObj(action.todoData, {id: action.todoId});
             return updatedObj(state, {
-                todos: action.todo,
-                error: null, 
-                loading: true,
+                loading: false,
+                todoSent: true,
+                todos: state.todos.concat(newTodo),
             })
+        
+        case 'TODO_FAIL': 
+            return updatedObj(state, {
+                loading: false,
+                todoSent: false,
+            });
+
+        // for Fetching //
 
         default: 
             return state;
