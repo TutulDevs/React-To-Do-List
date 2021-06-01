@@ -1,7 +1,6 @@
 import './TodoItem.css';
 
 const TodoItem = (props) => {
-    console.log(props);
 
     let todoItem_Box_Task = ['TodoItem_Box-Task'];
 

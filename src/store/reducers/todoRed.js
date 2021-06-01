@@ -30,7 +30,19 @@ const todoReducer = (state = initState, action) => {
                 todoSent: false,
             });
 
+
         // for Fetching //
+        case 'FETCH_TODOS_START': 
+            return updatedObj(state, {loading:false});
+
+        case 'FETCH_TODOS_SUCCESS':
+            return updatedObj(state, {
+                loading: false,
+                todos: action.todos, 
+            });
+            
+        case 'FETCH_TODOS_FAIL':
+            return updatedObj(state, {loading: false});
 
         default: 
             return state;
