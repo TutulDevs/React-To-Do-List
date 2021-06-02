@@ -13,22 +13,26 @@ class TodoList extends Component {
     }
 
     render() {
-        //console.log(typeof this.props.todos);
 
-        let todos = <Spinner />;
-        if(!this.props.todos.length) todos = <h3>No ToDos Yet.</h3>;
-        if(this.props.todos.length) todos = <h3>Display here!!</h3>;
+        let todoArr = [];
+        for (let key in this.props.todos) {
+                todoArr.push({
+                    ...this.props.todos[key],
+                    id: key,
+            })
+        }
+
+        let todos ;
+        if(this.props.loading) todos = <Spinner />;
+        if(!todoArr.length) todos = <h3>No ToDos Yet.</h3>;
+        if(todoArr.length) todos = todoArr.map((el,i) => <TodoItem key={el.id} task={el.todo} date={el.date} />);
         
 
         return (
             <ul className='TodoList'>
 
                 { todos }
-                
-                <TodoItem key='1' id='props.name' task='Get Shit Done!' date='5/31/2021, 11:34:23 PM' />
-    
-                <TodoItem key='2' id='props.name' task='Whats wrong with you?!' date='5/31/2021, 11:34:23 PM' />
-    
+
             </ul>
         )
     }
