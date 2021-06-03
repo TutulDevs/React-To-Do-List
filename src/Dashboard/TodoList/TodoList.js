@@ -4,7 +4,6 @@ import TodoItem from './TodoItem/TodoItem';
 import { connect } from 'react-redux';
 import { fetchTodos } from '../../store/actions/todoAction';
 import React, { Component } from 'react';
-import Spinner from '../../Spinner/Spinner';
 
 class TodoList extends Component {
 
@@ -16,15 +15,13 @@ class TodoList extends Component {
 
         let todoArr = [];
         for (let key in this.props.todos) {
-                todoArr.push({
+                todoArr.unshift({
                     ...this.props.todos[key],
                     id: key,
             })
         }
 
-        let todos ;
-        if(this.props.loading) todos = <Spinner />;
-        if(!todoArr.length) todos = <h3>No ToDos Yet.</h3>;
+        let todos = <h3>No ToDos Yet.</h3>;
         if(todoArr.length) todos = todoArr.map((el,i) => <TodoItem key={el.id} task={el.todo} date={el.date} />);
         
 

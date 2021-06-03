@@ -33,7 +33,7 @@ export const todoSend = (todoData, token) => {
         axios
             .post('/todos.json?auth=' + token, todoData)
             .then(res =>{
-                //console.log(res.data);
+                console.log(res.data);
                 dispatch(todoSuccess(res.data.name, todoData));
             })
             .catch(err => dispatch(err));

@@ -1,4 +1,23 @@
-# Getting Started with Create React App
+<br />
+
+# React ToDo List
+
+This project is under construction. I am building it to practice Reactjs, Route Reduxjs and Firebase auth. My main focus is Redux since I really struggle to understand it. 
+
+It is not deployed yet, but soon will be.
+
+**Features added:** 
+
+- Authentication
+- Data posting to FB 
+- Fetcing from FB
+- Modal
+- Guarded Route
+- User specific data
+
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
