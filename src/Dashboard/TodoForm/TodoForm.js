@@ -1,68 +1,80 @@
-import './TodoForm.css';
-import { useState } from 'react';
-import { connect } from 'react-redux';
-import { todoSend } from '../../store/actions/todoAction';
-
-
+import "./TodoForm.css";
+import { useState } from "react";
+import { connect } from "react-redux";
+import { todoSend } from "../../store/actions/todoAction";
 
 function TodoForm(props) {
+  const [todoData, setTodoData] = useState({
+    todo: "",
+    date: "",
+    completed: false,
+    userId: "",
+  });
 
-    const [singleTodo, setsingleTodo] = useState({
-        todo: '',
-        date: '',
-        completed: false, 
-        userId: '',
+  const handleChange = (e) => {
+    const created = new Date().toLocaleString();
+    const todo = e.target.value;
+
+    setTodoData({
+      todo,
+      date: created,
+      completed: false,
+      userId: props.userId,
     });
+  };
 
-    const handleChange = e => {
-        const created = new Date().toLocaleString();
-        const todo = e.target.value;
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        setsingleTodo({
-            todo,
-            date: created, 
-            completed: false,
-            userId: props.userId,
-        })
-    }
+    // send the state to FB
+    props.onTodoSend(todoData, props.token);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    // reset
+    e.target.reset();
+  };
 
-        // send the state to FB
-        props.onTodoSend(singleTodo, props.token); 
+  let button = (
+    <button className='submitBtn' aria-label='Add' type='submit'>
+      Add
+    </button>
+  );
+  if (props.loading)
+    button = (
+      <p className='submitBtn' aria-label='Loading...'>
+        Loading...
+      </p>
+    );
 
-        // reset
-        e.target.reset();
-    }
+  return (
+    <form className='TodoForm' id='form' onSubmit={handleSubmit}>
+      <div>
+        <input
+          type='text'
+          placeholder='What to do?'
+          maxLength='100'
+          required
+          onChange={handleChange}
+        />
 
-    let button = <button className='submitBtn' type='submit'>Add</button>;
-    if(props.loading) button = <p className='submitBtn'>Loading...</p>;
-
-    return (
-        <form className='TodoForm' id='form' onSubmit={handleSubmit}>
-            <div>
-                <input type='text' placeholder='What to do?' maxLength='50' required onChange={handleChange} />
-
-                { button }
-            </div>
-        </form>
-    )
+        {button}
+      </div>
+    </form>
+  );
 }
 
-const mapStateToProps = state => {
-    return {
-        loading: state.todo.loading,
-        todoSent: state.todo.todoSent,
-        token: state.auth.token, 
-        userId: state.auth.userId, 
-    }
-}
+const mapStateToProps = (state) => {
+  return {
+    loading: state.todo.loading,
+    todoSent: state.todo.todoSent,
+    token: state.auth.token,
+    userId: state.auth.userId,
+  };
+};
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onTodoSend: (todoData, token) => dispatch(todoSend(todoData, token)),
-    }
-}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onTodoSend: (todoData, token) => dispatch(todoSend(todoData, token)),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);
